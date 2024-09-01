@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 const Cta = () => {
   return (
-    <div className="h-[40vh] flex p-6 justify-between items-center">
+    <div className="min-h-[40vh] gap-3 flex flex-wrap p-6 justify-between items-center">
       <h1 className="text-4xl tracking-tighter font-semibold text-zinc-700 max-w-[450px]">
         This template could be yours by this second
       </h1>

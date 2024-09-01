@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { CheckCircle, X } from "lucide-react";
 import { Badge } from "./ui/badge";
+import Link from "next/link";
 
 const Pricing = () => {
   return (
@@ -16,9 +17,11 @@ const Pricing = () => {
         <div className="border rounded-xl flex flex-col gap-2 p-6 min-h-[300px]">
           <p className="text-sm">Starter</p>
           <h1 className="text-2xl font-bold tracking-tighter">Free</h1>
-          <Button variant="outline" className="mt-3 shadow-sm">
-            Get Started for Free
-          </Button>
+          <Link href="/sign-up">
+            <Button variant="outline" className="mt-3 shadow-sm">
+              Get Started for Free
+            </Button>
+          </Link>
           <div className="flex flex-col gap-[3px]">
             <div className="flex gap-1 items-center">
               <CheckCircle className="text-green-600" size={15} />
@@ -56,7 +59,9 @@ const Pricing = () => {
               /month
             </span>
           </div>
-          <Button className="mt-3 shadow-sm">Get Started with Pro</Button>
+          <Link href="/sign-up">
+            <Button className="mt-3 shadow-sm">Get Started with Pro</Button>
+          </Link>
           <div className="flex flex-col gap-[3px]">
             <div className="flex gap-1 items-center">
               <CheckCircle className="text-green-600" size={15} />
@@ -92,9 +97,11 @@ const Pricing = () => {
               /month
             </span>
           </div>
-          <Button variant="secondary" className="mt-3 shadow-sm">
-            Get Started with Premiere
-          </Button>
+          <Link href="/sign-up">
+            <Button variant="secondary" className="mt-3 shadow-sm">
+              Get Started with Premiere
+            </Button>
+          </Link>
           <div className="flex flex-col gap-[3px]">
             <div className="flex gap-1 items-center">
               <CheckCircle className="text-green-600" size={15} />
@@ -125,9 +132,12 @@ const Pricing = () => {
             <p className="text-sm">Enterprise</p>
           </div>
           <div className="text-2xl font-bold tracking-tighter">Custom</div>
-          <Button variant="secondary" className="mt-3 shadow-sm">
-            Get Started with Enterprise
-          </Button>
+          <Link href="/sign-up">
+            <Button variant="secondary" className="mt-3 shadow-sm">
+              Get Started with Enterprise
+            </Button>
+          </Link>
+
           <div className="flex flex-col gap-[3px]">
             <h1 className="text-sm">Everything on premiere plus:</h1>
             <div className="flex gap-1 items-center">

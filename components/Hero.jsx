@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import DotPattern from "./magicui/dot-pattern";
 import { Button } from "./ui/button";
@@ -7,6 +8,7 @@ import { BackgroundBeamsWithCollision } from "./ui/background-beams-with-collisi
 import AvatarCircles from "./magicui/avatar-circles";
 import WordRotate from "./magicui/word-rotate";
 import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 
 const Hero = () => {
   const avatarUrls = [
@@ -18,27 +20,41 @@ const Hero = () => {
 
   const spanWords = ["Learning", "Teaching", "Mastery", "Research"];
 
+  // Destructure the user object
+  const { user, isSignedIn } = useUser();
+
   return (
     <div className="py-10 w-full h-full relative min-h-[90vh] border-b flex justify-center items-center px-8 overflow-hidden">
       <div className="flex flex-col items-center gap-3 z-20">
-        <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-8 text-center">
-          Experience{" "}
-          <WordRotate
-            words={spanWords}
-            className="bg-gradient-to-r inline from-[#40c9ff] to-[#e81cff] text-transparent bg-clip-text"
-          >
-            Learning
-          </WordRotate>{" "}
-          <br /> like never before
-        </div>
+        {!isSignedIn ? (
+          <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-8 text-center">
+            Experience{" "}
+            <WordRotate
+              words={spanWords}
+              className="bg-gradient-to-r inline from-[#40c9ff] to-[#e81cff] text-transparent bg-clip-text"
+            >
+              Learning
+            </WordRotate>{" "}
+            <br /> like never before
+          </div>
+        ) : (
+          <div className="text-4xl tracking-tight font-bold">
+            Welcome back{" "}
+            <span className="text-primary">{user?.firstName}!</span>
+          </div>
+        )}
         <p className="text-lg max-w-[500px] text-center text-muted-foreground">
           A+ is the ultimate AI tool that helps teachers create courses and
           students organise their resources
         </p>
         <div>
-          <Link href="/dashboard">
-            <Button size="lg">Try now | For Free</Button>
-          </Link>
+          {!isSignedIn ? (
+            <Link href="/dashboard">
+              <Button size="lg">Try now | For Free</Button>
+            </Link>
+          ) : (
+            <Button size="lg">Go to Dashboard</Button>
+          )}
         </div>
         <p className="text-muted-foreground/90 mt-2">
           Join 200+ happy Academics

@@ -9,16 +9,16 @@ const Addcourse = () => {
   const { user } = useUser();
   return (
     <div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-wrap">
         <div className="text-2xl tracking-tight font-medium">
-          Welcome back,{" "}
+          Thanks,{" "}
           <span className="bg-gradient-to-r from-[#439cfb] to-[#e81cff] text-transparent bg-clip-text">
             {user?.firstName}!
           </span>
-          {"  "} Let's create
+          {"  "} for helping me test my <br /> authentication system,
         </div>
-        <Link href="/create-course">
-          <Button>+ Create new course</Button>
+        <Link href="/" target="_blank">
+          <Button>Back to Homepage</Button>
         </Link>
       </div>
     </div>

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Logo from "@/public/logo.png";
 import { Button } from "./ui/button";
 import Branding from "./Branding";
+import { UserButton, useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,6 +25,8 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const { isSignedIn } = useUser();
   return (
     <div className="border">
       <nav
@@ -32,9 +36,20 @@ const Navbar = () => {
       >
         <Branding />
         <div>
-          <Button className="hover:scale-[1.008] transition">
-            Create Courses
-          </Button>
+          {!isSignedIn ? (
+            <Link href="/sign-in">
+              <Button className="hover:scale-[1.008] transition">
+                Get Started
+              </Button>
+            </Link>
+          ) : (
+            <div className="flex gap-2 items-center">
+              <Link href="/dashboard">
+                <Button variant="outline">Go to Dashboard</Button>
+              </Link>
+              <UserButton />
+            </div>
+          )}
         </div>
       </nav>
     </div>
